@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/alertifyjs/build/css/alertify.min.css";
+@import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  transition: all 0.3s;
+  -webkit-touch-callout: none; /* Safari */
+  -webkit-user-select: none; /* Chrome */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+@media screen and (min-width: 540px) {
+  body {
+    font-size: 1.1rem;
+  }
+}
+@media screen and (min-width: 740px) {
+  body {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (min-width: 1800px) {
+  body {
+    font-size: 1.5rem;
+  }
+}
