@@ -1,0 +1,84 @@
+.survey-container {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 89%;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+.form-container {
+  margin: 2em 0;
+}
+input {
+  padding: 0.75em 1.25em;
+  margin-bottom: 0.5em;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  border: white 1px solid;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1.25em;
+  font-weight: 700;
+  padding: 0.75em 1.25em;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+.date {
+  padding: 0;
+}
+
+.heading {
+  text-align: center;
+  font-size: 3.5em;
+  font-weight: 700;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.questions {
+  display: flex;
+  width: 100%;
+}
+.answers {
+  display: flex;
+}
+
+.close {
+  border: none;
+  padding: 0;
+  margin: 0 0.75em;
+}
+.close:hover {
+  background-color: inherit;
+  color: inherit;
+}
+
+.add-option {
+  padding: 0.5em 0.75em;
+  border-radius: 20px;
+  margin-bottom: 1em;
+}
+
+.button-row {
+  margin-top: 1em;
+}
+
+button:disabled,
+button[disabled] {
+  color: #b6b6b6;
+  pointer-events: none;
+}
