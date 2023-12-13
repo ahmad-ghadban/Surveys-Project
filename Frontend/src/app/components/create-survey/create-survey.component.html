@@ -1,0 +1,222 @@
+<app-navbar></app-navbar>
+<div class="survey-container">
+  <div class="form-container">
+    <div class="heading">
+      <fa-icon [icon]="editIcon"></fa-icon> Create Survey
+    </div>
+    <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+      <mat-button-toggle-group
+        formControlName="isPublic"
+        style="margin-bottom: 10px"
+      >
+        <mat-button-toggle value="true">Public</mat-button-toggle>
+        <mat-button-toggle value="false">Private</mat-button-toggle>
+      </mat-button-toggle-group>
+<!--         {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+    <button [disabled]="!userList.includes(participantName.value)"
+      type="button"
+      (click)="
+        addParticipant(participantName.value); participantName.value = ''
+      "
+    >
+      Add
+    </button>
+    <p>
+      Selected survey participants:
+      {{ surveyForm.controls["participants"].value.toString() }}
+    </p>
+    <br />
+  </div>
+
+  <p>Input the deadline for this survey:</p>
+  <mat-form-field appearance="fill">
+    <input
+      matInput
+      [matDatepickerFilter]="deadlineValidation"
+      formControlName="deadline"
+      [matDatepicker]="picker"
+      placeholder="Choose a date"
+      [disabled]="true"
+    />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker disabled="false"></mat-datepicker> </mat-form-field
+  ><br />
+
+  <div class="survey">
+    <div formArrayName="surveyQuestions" class="survey-question">
+      <h3 class="list-title">Add Survey Questions</h3> -->
+
+      <div *ngIf="surveyForm.controls['isPublic'].value == 'false'">
+        <input
+          #participantName
+          formArrayName="participants"
+          type="text"
+          placeholder="Enter participant name"
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+        <p style="margin-top: 5px">
+          Selected participants:
+          {{ surveyForm.controls["participants"].value.toString() }}
+        </p>
+        <button
+          class="add-option" [disabled]="!userList.includes(participantName.value)"
+          type="button"
+          (click)="
+            addParticipant(participantName.value); participantName.value = ''
+          "
+        >
+          Add
+        </button>
+<!--         <p>
+      Selected survey participants:
+      {{ surveyForm.controls["participants"].value.toString() }}
+    </p> -->
+        <br />
+      </div>
+
+      <p style="margin-top: 10px">
+        Deadline <span style="font-style: italic">(optional)</span>:
+      </p>
+      <mat-form-field appearance="fill">
+        <input
+          class="date"
+          matInput
+          [matDatepickerFilter]="deadlineValidation"
+          formControlName="deadline"
+          [matDatepicker]="picker"
+          placeholder="Choose a date"
+          [disabled]="true"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker
+          #picker
+          disabled="false"
+        ></mat-datepicker> </mat-form-field
+      ><br />
+      <!-- <p>{{surveyForm.controls['deadline'].value}}</p> -->
+      <div class="survey-title-description">
+        <div style="text-align: left">
+          <label>Title</label><br />
+          <input
+            formControlName="surveyTitle"
+            placeholder="Survey Title"
+          /><br />
+        </div>
+        <div style="text-align: left">
+          <label>Description</label><br />
+          <input
+            formControlName="surveyDescription"
+            placeholder="Survey Description"
+          />
+        </div>
+      </div>
+      <br />
+
+      <div class="survey">
+        <div formArrayName="surveyQuestions" class="survey-question">
+          <div style="text-align: left">
+            <label>Questions</label>
+          </div>
+
+          <div
+            *ngFor="
+              let questionCtrl of surveyForm.get('surveyQuestions')['controls'];
+              let i = index
+            "
+          >
+            <div [formGroupName]="i">
+              <div class="questions">
+                <input formControlName="questionTitle" placeholder="Question" />
+                <button
+                  class="close"
+                  *ngIf="i > 0"
+                  type="button"
+                  (click)="onRemoveQuestion(i)"
+                >
+                  X
+                </button>
+              </div>
+              <ul class="question-type" formArrayName="options">
+                <li
+                  *ngFor="
+                    let optionCtrl of questionCtrl.controls.options.controls;
+                    let j = index
+                  "
+                >
+                  <div class="answers">
+                    <input
+                      [formControlName]="j"
+                      placeholder="Answer"
+                      [required]="true"
+                    />
+                    <button
+                      class="close"
+                      type="button"
+                      *ngIf="j >= 1"
+                      (click)="removeOption(i, j)"
+                    >
+                      X
+                    </button>
+                  </div>
+                </li>
+              </ul>
+              <button
+                class="add-option"
+                type="button"
+                (click)="addOption(i)"
+                color="accent"
+              >
+                Add Option
+              </button>
+            </div>
+          </div>
+          <div>
+            <button
+              style="margin-top: 0em"
+              type="button"
+              (click)="onAddQuestion()"
+            >
+              Add Question
+            </button>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div class="button-row">
+        <button
+          style="margin-right: 10px"
+          class="full-width"
+          color="primary"
+          type="submit"
+          [disabled]="!surveyForm.valid"
+        >
+          <span>Save</span>
+        </button>
+        <button
+          class="full-width"
+          color="primary"
+          type="button"
+          (click)="onPublish()"
+          [disabled]="!surveyForm.valid"
+        >
+          <span>Save and Publish</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
