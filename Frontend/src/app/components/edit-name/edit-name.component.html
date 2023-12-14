@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Edit Name</h2>
+<mat-dialog-content>
+  <form [formGroup]="newNameForm">
+    <div class="form-group col-12">
+      <label for="name">New Name: </label>
+      <input type="text" [(ngModel)]="data.newName" formControlName="name" />
+      <!-- add error message for touched vid 16 min 18-->
+    </div>
+
+    <div class="form-group col-12" style="margin-top: 20px; text-align: center">
+      <!-- reset form -->
+      <button
+        style="margin-right: 5px"
+        mat-button
+        type="submit"
+        [mat-dialog-close]="data.newName"
+        [disabled]="!newNameForm.valid"
+      >
+        Save
+      </button>
+      <button mat-button mat-dialog-close type="reset">Cancel</button>
+      <!-- make a on Cancel button-->
+    </div>
+  </form>
+</mat-dialog-content>
