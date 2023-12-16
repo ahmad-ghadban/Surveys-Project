@@ -1,0 +1,53 @@
+.manage-users-container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 89%;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+.heading {
+  font-size: 3.5em;
+  font-weight: 700;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1.25em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+.add {
+  border: white 1px solid;
+  padding: 0.75em 1.25em;
+}
+
+.users {
+  font-size: 1.5em;
+}
+
+.table {
+  font-size: 1.75em;
+  margin: 1.5em 4em;
+  padding: 1em;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+}
