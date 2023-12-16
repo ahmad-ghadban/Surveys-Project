@@ -1,0 +1,106 @@
+<app-navbar></app-navbar>
+<div class="manage-users-container">
+  <div class="heading">
+    <fa-icon [icon]="manageIcon"></fa-icon> Manage Users
+  </div>
+  <button class="add" (click)="openRegister()">Add User</button>
+
+
+  <table class="table" style="width:40%; margin-top: 2em;">
+    <thead>
+        <tr  style="height: 2em;">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th style="width:1%"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userList" style="height: 1em;">
+          <td>{{user.id}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.active == 1 ? "Active" : "Inactive"}}</td>
+            <td>
+              <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+              >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="nameDialog(user.id)">
+                <mat-icon>account_box</mat-icon>
+                <span>Edit Name</span>
+              </button>
+              <button mat-menu-item (click)="passwordDialog(user.id)">
+                <mat-icon>lock</mat-icon>
+                <span>Edit Password</span>
+              </button>
+              <button
+              *ngIf="user.active == 1"
+              mat-menu-item
+              (click)="onDelete(user.name)"
+              >
+              <mat-icon>delete</mat-icon>
+              <span>Deactivate</span>
+            </button>
+            <button
+            *ngIf="user.active == 0"
+            mat-menu-item
+            (click)="onActivate(user.name)"
+            >
+            <mat-icon>add_box</mat-icon>
+            <span>Activate</span>
+          </button>
+        </mat-menu>
+      </td>
+    </tr>
+  </tbody>
+</table>
+  <br />
+  <br />
+
+  <!-- <div class="users" *ngFor="let user of userList">
+    <span *ngIf="user.name != 'Administrator'"
+      >{{ user.name }}
+      <span *ngIf="user.active == 0"> (Inactive)</span>
+
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="nameDialog(user.id)">
+          <mat-icon>account_box</mat-icon>
+          <span>Edit Name</span>
+        </button>
+        <button mat-menu-item (click)="passwordDialog(user.id)">
+          <mat-icon>lock</mat-icon>
+          <span>Edit Password</span>
+        </button>
+        <button
+          *ngIf="user.active == 1"
+          mat-menu-item
+          (click)="onDelete(user.name)"
+        >
+          <mat-icon>delete</mat-icon>
+          <span>Deactivate</span>
+        </button>
+        <button
+          *ngIf="user.active == 0"
+          mat-menu-item
+          (click)="onActivate(user.name)"
+        >
+          <mat-icon>add_box</mat-icon>
+          <span>Activate</span>
+        </button>
+      </mat-menu>
+      <br />
+    </span>
+  </div> -->
+</div>
