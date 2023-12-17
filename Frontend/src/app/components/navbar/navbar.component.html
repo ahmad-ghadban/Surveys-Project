@@ -1,0 +1,15 @@
+<nav>
+  <div class="title" (click)="homepage()">
+    <fa-icon [icon]="documentIcon"> </fa-icon> EazySurvey
+  </div>
+  <div class="user-info">
+    <div class="user-name">
+      <fa-icon [icon]="userIcon" size="xl"></fa-icon>
+      {{ name }}
+    </div>
+    <button (click)="logout()">
+      <fa-icon [icon]="logoutIcon" size="xl"></fa-icon>
+      Logout
+    </button>
+  </div>
+</nav>
