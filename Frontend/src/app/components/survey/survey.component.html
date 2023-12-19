@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="survey-container">
+  <form (ngSubmit)="onSubmit(surveyForm)" #surveyForm="ngForm">
+    <div class="heading">{{ survey.name }}</div>
+    <div *ngIf="survey.isPublic">(Public)</div>
+    <div *ngIf="!survey.isPublic">(Private)</div>
+    <div class="description">{{ survey.description }}</div>
+    <div class="questions">
+      <div
+        class="questionContainer"
+        *ngFor="let pair of survey.questions; let i = index"
+      >
+        <div class="question">{{ i + 1 }}. {{ pair.Question }}</div>
+        <div *ngFor="let answer of pair.Answers" style="margin-bottom: 0.5em" class="answers">
+          <input
+            required
+            ngModel
+            type="radio"
+            [id]="answer"
+            [name]="pair.Question"
+            [value]="answer"
+          />
+          <label [for]="answer">
+            {{ answer }}
+          </label>
+        </div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="!surveyForm.valid">Submit</button>
+  </form>
+</div>
