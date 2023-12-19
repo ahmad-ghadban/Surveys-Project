@@ -1,0 +1,31 @@
+.results-container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 89%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+button {
+  border: white 1px solid;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1.25em;
+  font-weight: 700;
+  padding: 0.75em 1.25em;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+.buttons {
+  margin: 1em 0;
+}
