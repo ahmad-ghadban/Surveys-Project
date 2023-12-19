@@ -1,0 +1,46 @@
+<div *ngIf="toggled">
+  <app-navbar></app-navbar>
+</div>
+<div class="results-container">
+  <div class="buttons">
+    <button style="margin-right: 10px" (click)="onBack()">Back</button>
+    <button id="exportButton" (click)="turnOff()" (click)="openPDF()">
+      Export as PDF
+    </button>
+  </div>
+
+  <canvasjs-chart
+    class="respondents"
+    [options]="completed(surveyResults)"
+    [styles]="{
+      width: '50%',
+      height: '360px',
+      float: 'middle',
+      backgroundColor: 'transparent'
+    }"
+  ></canvasjs-chart>
+
+  <div *ngFor="let result of resultResponses; let i = index">
+    <span *ngIf="i < numberOfQuestions">
+      <canvasjs-chart
+        [options]="chartDetailbar(i)"
+        [styles]="{
+          width: '50%',
+          height: '360px',
+          float: 'left',
+          backgroundColor: 'transparent'
+        }"
+      ></canvasjs-chart>
+
+      <canvasjs-chart
+        [options]="chartDetail(i)"
+        [styles]="{
+          width: '50%',
+          height: '360px',
+          float: 'left',
+          backgroundColor: 'transparent'
+        }"
+      ></canvasjs-chart>
+    </span>
+  </div>
+</div>
