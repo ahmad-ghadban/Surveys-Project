@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div class="survey-detail-container">
+  <div style="margin-top: 1em" *ngIf="survey">
+    <button style="margin-right: 10px" (click)="redirectToResults()">
+      Results
+    </button>
+    <button style="margin-right: 10px" (click)="onDelete()">Delete</button>
+    <span *ngIf="!toggle">
+      <button (click)="onPublish()">Publish</button>
+    </span>
+    <span *ngIf="toggle">
+      <button (click)="copySurveyURL()">Share</button>
+    </span>
+    <div class="heading">{{ survey.name }}</div>
+    <div *ngIf="survey.isPublic">(Public)</div>
+    <div *ngIf="!survey.isPublic">(Private)</div>
+    <div class="description">{{ survey.description }}</div>
+    <div class="questions">
+      <div
+        class="questionContainer"
+        *ngFor="let pair of survey.questions; let i = index"
+      >
+        <div class="question">{{ i + 1 }}. {{ pair.Question }}</div>
+        <div
+          style="margin-bottom: 0.5em"
+          *ngFor="let answer of pair.Answers"
+          class="answers"
+        >
+          <input [disabled]="true" type="radio" />
+          <label [for]="answer">
+            {{ answer }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
