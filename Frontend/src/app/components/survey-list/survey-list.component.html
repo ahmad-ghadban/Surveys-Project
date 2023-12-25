@@ -1,0 +1,101 @@
+<div *ngIf="privateSurveys">
+  <div class="list-container">
+    <div class="heading">Invite-Only</div>
+    <div class="survey-list-container">
+      <mat-grid-list [cols]="columns" rowHeight="20em">
+        <mat-grid-tile *ngFor="let survey of privateSurveys">
+          <div class="card" (click)="redirect(survey.id)">
+            <div class="title">{{ survey.name }}</div>
+            <div class="info">
+              <div class="subtitle">Questions:</div>
+              <div class="subtitle">
+                {{ numberOfQuestions(survey.questions) }}
+              </div>
+              <div class="subtitle">Duration:</div>
+              <div class="subtitle">
+                ~{{ (numberOfQuestions(survey.questions) * 30) / 60 }} min
+              </div>
+              <div class="subtitle" *ngIf="survey.deadline !== 0">
+                Deadline:
+              </div>
+              <div class="subtitle" *ngIf="survey.deadline !== 0">
+                {{ relativeTime(survey.deadline) }}
+              </div>
+            </div>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="savedSurveys">
+  <div class="list-container">
+    <div class="heading">Saved</div>
+    <div class="survey-list-container">
+      <mat-grid-list [cols]="columns" rowHeight="20em">
+        <mat-grid-tile *ngFor="let survey of savedSurveys">
+          <div class="card" (click)="redirect(survey.id)">
+            <div class="title">{{ survey.name }}</div>
+            <div class="info">
+              <div class="subtitle">Questions:</div>
+              <div class="subtitle">
+                {{ numberOfQuestions(survey.questions) }}
+              </div>
+              <div class="subtitle">Duration:</div>
+              <div class="subtitle">
+                ~{{ (numberOfQuestions(survey.questions) * 30) / 60 }} min
+              </div>
+              <div class="subtitle" *ngIf="survey.deadline !== 0">
+                Deadline:
+              </div>
+              <div class="subtitle" *ngIf="survey.deadline !== 0">
+                {{ relativeTime(survey.deadline) }}
+              </div>
+            </div>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="surveys">
+  <div class="list-container">
+    <div *ngIf="name === 'Administrator'" class="heading">Published</div>
+    <div *ngIf="name != 'Administrator'" class="heading">Public</div>
+    <div class="survey-list-container">
+      <mat-grid-list [cols]="columns" rowHeight="20em">
+        <mat-grid-tile *ngFor="let survey of surveys">
+          <div class="card" (click)="redirect(survey.id)">
+            <div class="title">{{ survey.name }}</div>
+            <div class="info">
+              <div class="subtitle">Questions:</div>
+              <div class="subtitle">
+                {{ numberOfQuestions(survey.questions) }}
+              </div>
+              <div class="subtitle">Duration:</div>
+              <div class="subtitle">
+                ~{{ (numberOfQuestions(survey.questions) * 30) / 60 }} min
+              </div>
+              <div class="subtitle" *ngIf="survey.deadline !== 0">
+                Deadline:
+              </div>
+              <div class="subtitle" *ngIf="survey.deadline !== 0">
+                {{ relativeTime(survey.deadline) }}
+              </div>
+            </div>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!privateSurveys">
+  <div *ngIf="!surveys">
+    <div *ngIf="!savedSurveys">
+      <div class="no-survey">No surveys available.</div>
+    </div>
+  </div>
+</div>
