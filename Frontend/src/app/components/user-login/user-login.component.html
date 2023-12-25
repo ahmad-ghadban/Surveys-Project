@@ -1,0 +1,30 @@
+<div class="login-container">
+  <div class="app-info">
+    <div class="icon">
+      <fa-icon [icon]="documentIcon" size="xl"></fa-icon>
+    </div>
+    <div class="title">EazySurvey</div>
+  </div>
+
+  <div class="login">
+    <form #loginForm="ngForm">
+      <input required ngModel name="name" placeholder="Name" />
+
+      <input
+        required
+        type="{{ state }}"
+        ngModel
+        name="password"
+        placeholder="Password"
+      />
+
+      <button
+        [disabled]="!loginForm.valid"
+        type="submit"
+        (click)="onLogin(loginForm)"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div>
