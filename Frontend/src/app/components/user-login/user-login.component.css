@@ -1,0 +1,60 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.icon {
+  color: white;
+  font-size: 6em;
+  width: 100%;
+  margin-bottom: 0.4em;
+}
+
+.title {
+  color: white;
+  font-size: 4em;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+}
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 0.75em 1.25em;
+  margin-bottom: 0.4em;
+  width: 20vw;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  border: white 1px solid;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1.25em;
+  font-weight: 700;
+  padding: 0.75em 1.25em;
+  margin-top: 0.4em;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
