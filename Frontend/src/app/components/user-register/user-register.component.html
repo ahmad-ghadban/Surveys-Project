@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="user-register-container">
+  <div class="heading"><fa-icon [icon]="userIcon"></fa-icon> Regsiter User</div>
+  <!--could change to alertify-->
+  <form [formGroup]="registerationForm">
+    <div class="form-group col-12">
+      <input type="text" formControlName="name" placeholder="Name" />
+      <!-- add error message for touched vid 16 min 18-->
+    </div>
+
+    <div class="form-group col-12">
+      <input
+        type="{{ state }}"
+        formControlName="password"
+        placeholder="Password"
+      />
+      <!-- add error message for touched / length? -->
+    </div>
+
+    <div class="form-group col-12">
+      <input
+        type="{{ stateC }}"
+        formControlName="confirmPassword"
+        placeholder="Confirm Password"
+      />
+      <!-- add show password-->
+      <!-- add error message for touched -->
+      <p
+        style="color: red"
+        *ngIf="
+          registerationForm.hasError('notmatched') && confirmPassword.valid
+        "
+      >
+        Password not matched
+      </p>
+    </div>
+
+    <div style="margin-top: 10px" class="form-group col-12">
+      <button
+        style="margin-right: 5px"
+        [disabled]="!registerationForm.valid"
+        type="submit"
+        (click)="onSubmit()"
+      >
+        Save
+      </button>
+      <button type="reset" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>
